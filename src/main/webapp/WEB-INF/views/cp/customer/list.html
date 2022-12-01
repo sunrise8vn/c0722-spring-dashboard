@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>List of customers</title>
+  <th:block th:replace="cp/layout/head :: head" />
+
+  <style>
+    .fl {
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+  <!-- Topbar Start -->
+  <th:block th:replace="cp/layout/topbar :: topbar" />
+  <!-- end Topbar -->
+
+  <!-- ========== Left Sidebar Start ========== -->
+  <th:block th:replace="cp/layout/left-side-menu :: left-side-menu" />
+  <!-- Left Sidebar End -->
+
+  <!-- ============================================================== -->
+  <!-- Start Page Content here -->
+  <!-- ============================================================== -->
+
+  <div class="content-page">
+    <div class="content">
+
+      <!-- Start Content-->
+      <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box">
+              <h4 class="page-title">List of customers !</h4>
+            </div>
+          </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row mb-3">
+          <div class="col-lg-6">
+            <div class="col-lg-9 fl">
+              <form class="form-group">
+                <input type="text" class="form-control col-lg-9 fl" name="searchKey">
+                <button type="submit" class="col-lg-3 fl btn btn-outline-primary">
+                  <i class="fa fa-search"></i>
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card-box">
+              <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Full Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Address</th>
+                      <th>Balance</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <th:block th:each="item : ${customers}">
+                      <tr>
+                        <th th:text="${item.id}"></th>
+                        <th th:text="${item.fullName}"></th>
+                        <th th:text="${item.email}"></th>
+                        <th th:text="${item.phone}"></th>
+                        <th th:text="${item.address}"></th>
+                        <th th:text="${item.balance}"></th>
+                        <th>
+                          <a th:href="@{/cp/customers/edit/__${item.id}__}">
+                            <button class="btn btn-outline-secondary">
+                              <i class="fas fa-pencil-alt"></i>
+                              Edit
+                            </button>
+                          </a>
+                        </th>
+                      </tr>
+                    </th:block>
+                  </tbody>
+                </table>
+              </div> <!-- end table-responsive-->
+
+            </div> <!-- end card-box -->
+          </div>
+        </div>
+
+      </div> <!-- container -->
+
+    </div> <!-- content -->
+
+    <!-- Footer Start -->
+    <th:block th:replace="cp/layout/footer :: footer" />
+    <!-- end Footer -->
+
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- End Page content -->
+  <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+<!-- Right Sidebar -->
+<th:block th:replace="cp/layout/right-bar :: right-bar" />
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+
+<!-- Vendor js -->
+<script src="/assets/js/vendor.min.js"></script>
+
+<!-- third party js -->
+
+<!-- third party js ends -->
+
+<!-- App js -->
+<script src="/assets/js/app.min.js"></script>
+
+<script>
+
+</script>
+
+</body>
+</html>
