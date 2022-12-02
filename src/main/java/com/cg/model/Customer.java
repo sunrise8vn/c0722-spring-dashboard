@@ -1,7 +1,10 @@
 package com.cg.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
+import java.util.List;
 
 
 @Entity
@@ -22,6 +25,9 @@ public class Customer
 
     @Column(precision = 12, scale = 0, nullable = false)
     private BigDecimal balance;
+
+    @OneToMany
+    private List<Deposit> deposits;
 
     public Customer() {
     }

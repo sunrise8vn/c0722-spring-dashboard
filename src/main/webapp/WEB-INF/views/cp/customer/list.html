@@ -71,26 +71,34 @@
                       <th>Phone</th>
                       <th>Address</th>
                       <th>Balance</th>
-                      <th>Action</th>
+                      <th colspan="2">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <th:block th:each="item : ${customers}">
                       <tr>
-                        <th th:text="${item.id}"></th>
-                        <th th:text="${item.fullName}"></th>
-                        <th th:text="${item.email}"></th>
-                        <th th:text="${item.phone}"></th>
-                        <th th:text="${item.address}"></th>
-                        <th th:text="${item.balance}"></th>
-                        <th>
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.fullName}"></td>
+                        <td th:text="${item.email}"></td>
+                        <td th:text="${item.phone}"></td>
+                        <td th:text="${item.address}"></td>
+                        <td th:text="${item.balance}"></td>
+                        <td>
                           <a th:href="@{/cp/customers/edit/__${item.id}__}">
                             <button class="btn btn-outline-secondary">
                               <i class="fas fa-pencil-alt"></i>
                               Edit
                             </button>
                           </a>
-                        </th>
+                        </td>
+                        <td>
+                          <a th:href="@{/cp/customers/delete/__${item.id}__}">
+                            <button class="btn btn-outline-danger">
+                              <i class="fas fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </a>
+                        </td>
                       </tr>
                     </th:block>
                   </tbody>
